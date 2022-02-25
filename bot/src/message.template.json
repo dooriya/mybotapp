@@ -1,16 +1,56 @@
 {
-    "type": "AdaptiveCard",
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
     "version": "1.4",
     "body": [
         {
             "type": "TextBlock",
             "text": "${title}",
-            "size": "large"
+            "size": "Large",
+            "weight": "Bolder"
         },
         {
             "type": "TextBlock",
-            "text": "${message}"
+            "text": "${appName}",
+            "isSubtle": true,
+            "color": "Accent",
+            "weight": "Bolder",
+            "size": "Small",
+            "spacing": "None"
+        },
+        {
+            "type": "TextBlock",
+            "text": "${description}",
+            "isSubtle": true,
+            "wrap": true,
+            "maxLines": 3
+        },
+        {
+            "type": "TextBlock",
+            "text": "Select quick action"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "response",
+            "choices": [
+                {
+                    "$data": "${actionChoices}",
+                    "title": "${title}",
+                    "value": "${value}"
+                }
+            ],
+            "style": "compact"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Submit"
+        },
+        {
+            "type": "Action.OpenUrl",
+            "title": "View Details",
+            "url": "${notificationUrl}"
         }
     ]
 }
